@@ -1,0 +1,15 @@
+{
+    "name": "alviden/yii2-corrector",
+    "description": "User errors corrector for Yii2",
+	"keywords": ["yii2", "component", "search", "corrector", "normalize"],
+    "authors": [
+        {
+            "name": "Alexey Videneev",
+            "email": "al.videneev@yandex.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+		"yiisoft/yii2": "^2.0.13"
+	}
+}
