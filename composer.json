@@ -2,6 +2,7 @@
     "name": "alviden/yii2-corrector",
     "description": "User errors corrector for Yii2",
 	"keywords": ["yii2", "component", "search", "corrector", "normalize"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Alexey Videneev",
