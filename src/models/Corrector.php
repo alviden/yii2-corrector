@@ -1,7 +1,8 @@
 <?php
+
 namespace alviden\corrector\models;
 
-use SearchHash;
+use alviden\corrector\models\SearchHash;
 
 /**
  * Класс, корректирующий орфографию и раскладку
