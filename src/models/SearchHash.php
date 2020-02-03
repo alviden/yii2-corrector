@@ -1,6 +1,6 @@
 <?php
 
-namespace alviden\models;
+namespace alviden\corrector\models;
 
 use Yii;
 
