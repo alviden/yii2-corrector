@@ -1,6 +1,7 @@
 {
     "name": "alviden/yii2-corrector",
     "description": "User errors corrector for Yii2",
+    "type": "yii2-extension",
 	"keywords": ["yii2", "component", "search", "corrector", "normalize"],
     "license": "MIT",
     "authors": [
@@ -9,13 +10,12 @@
             "email": "al.videneev@yandex.ru"
         }
     ],
-    "minimum-stability": "stable",
     "require": {
 		"yiisoft/yii2": "^2.0.13"
-	}
+	},
     "autoload": {
         "psr-4": {
-            "alviden\\corrector\\": ""
+            "alviden\\corrector\\": "src/"
         }
     },
     "repositories": [
