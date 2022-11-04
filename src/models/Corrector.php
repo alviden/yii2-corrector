@@ -49,7 +49,7 @@ class Corrector
     
     /**
      * Добавление нового слова
-     * @param type $word слово
+     * @param string $word слово
      * @return boolean успешность сохранения
      */
     public function addWord($word)
@@ -64,7 +64,7 @@ class Corrector
     
     /**
      * Удаление слова
-     * @param type $word слово
+     * @param string $word слово
      * @return boolean успешность удаления
      */
     public function delWord($word)
@@ -78,7 +78,7 @@ class Corrector
 
     /**
      * Возвращает нормализованное слово
-     * @param type $word слово
+     * @param string $word слово
      * @return string нормализованное слово
      */
     public function getCorrectWord($word)
@@ -102,7 +102,7 @@ class Corrector
     /**
      * Отображает ход поиска подходящего слова
      * Используется для проверки
-     * @param type $word слово
+     * @param string $word слово
      */
     public function findRes($word)
     {
@@ -112,7 +112,6 @@ class Corrector
         $resArr = $this->getHashes($hash);
 
         $maxCoef = 0;
-        $needName = '';
         foreach($resArr as $res) {
             $tempCoef = $this->jaroWinkler($res->name, $word);
             if ($maxCoef < $tempCoef) {
@@ -123,12 +122,11 @@ class Corrector
                 echo '***<br>' ;
             }
         }
-        return;
     }
     
     /**
      * Возвращает массив хешей из бд
-     * @param type $hash хеш, полученный от пользователя
+     * @param string $hash хеш, полученный от пользователя
      * @return array массив похожих записей
      */
     private function getHashes($hash)
@@ -165,14 +163,17 @@ class Corrector
 
     /**
      * сравнивает 2 строки, на выходе получаем вес
-     * @param type $str1 слово, введенное пользователем
-     * @param type $str2 искомое слово из словаря
+     * @param string $str1 слово, введенное пользователем
+     * @param string $str2 искомое слово из словаря
      */
     private function jaroWinkler($str1, $str2) {
         $str1 = mb_strtolower($str1);
         $str2 = mb_strtolower($str2);
         //если вводимое слово и искомое слово в разных раскладках, вводимое слово приводим к искомому
-        if ($str1[0] <= 'z' && $str2[0] > 'z' || $str2[0] <= 'z' && $str1[0] > 'z') {
+        $firstSymbolStr1 = mb_substr($str1, 0, 1);
+        $firstSymbolStr2 = mb_substr($str2, 0, 1);
+        //если вводимое слово и искомое слово в разных раскладках, вводимое слово приводим к искомому
+        if (($firstSymbolStr1 <= 'z' && $firstSymbolStr2 > 'z') || ($firstSymbolStr2 <= 'z' && $firstSymbolStr1 > 'z')) {
             $str1 = $this->puntoSwitcher($str1);
         }
         $s1 = mb_strlen($str1);
